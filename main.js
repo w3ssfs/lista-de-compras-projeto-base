@@ -1,4 +1,5 @@
 let listaDeItens = [];
+let itemAEditar;
 
 const form = document.getElementById("form-itens");
 const itensInput = document.getElementById("receber-item");
@@ -55,6 +56,7 @@ function mostrarItem() {
     <div>
         <i class="fa-solid fa-trash is-clickable deletar"></i>
     </div>
+    <i class="fa-regular fa-floppy-disk is-clickable"></i><i class="fa-regular is-clickable fa-pen-to-square editar"></i>
 </li>
     `;
     }
@@ -78,6 +80,17 @@ function mostrarItem() {
         e.target.parentElement.parentElement.getAttribute("data-value");
       listaDeItens.splice(valorDoElemento, 1);
       mostrarItem();
+    });
+  });
+
+  const editarItens = document.querySelectorAll(".editar");
+
+  editarItens.forEach((i) => {
+    i.addEventListener("click", (e) => {
+      itemAEditar =
+        e.target.parentElement.parentElement.getAttribute("data-value");
+      mostrarItem();
+      console.log(itemAEditar);
     });
   });
 }
